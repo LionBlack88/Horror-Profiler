@@ -1,18 +1,42 @@
 body { 
   background-color: #0a0a0a; 
-  margin: 0; display: flex; justify-content: center; align-items: center; 
-  min-height: 100vh; font-family: 'Segoe UI', sans-serif; 
+  margin: 0; 
+  display: flex; 
+  justify-content: center; 
+  /* Modificato: allinea in alto per evitare oscillazioni se il contenuto cambia */
+  align-items: flex-start; 
+  padding-top: 20px;
+  min-height: 100vh; 
+  font-family: 'Segoe UI', sans-serif; 
 }
 
 #horror-quiz-box { 
-  max-width: 550px; width: 100%; padding: 30px; 
-  background: #1a1a1a; color: #fff; border: 2px solid #8B0000; 
-  border-radius: 20px; box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+  max-width: 550px; 
+  width: 100%; 
+  /* AGGIUNTO: Altezza minima fissa per evitare lo scatto del grafico */
+  min-height: 720px; 
+  padding: 30px; 
+  background: #1a1a1a; 
+  color: #fff; 
+  border: 2px solid #8B0000; 
+  border-radius: 20px; 
+  box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
   transition: background-color 0.2s ease;
-  position: relative; overflow: hidden;
+  position: relative; 
+  overflow: hidden;
+  /* Assicura che il padding non aumenti la dimensione totale */
+  box-sizing: border-box; 
 }
 
 .blood-flash { background-color: #440000 !important; }
+
+/* Contenitore interno per distanziare meglio gli elementi durante il quiz */
+#quiz-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 650px;
+  justify-content: space-between;
+}
 
 #question-wrapper { transition: all 0.3s ease; opacity: 1; transform: translateX(0); }
 .fade-out { opacity: 0; transform: translateX(-20px); }
