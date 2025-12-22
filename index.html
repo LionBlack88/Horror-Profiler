@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horror Profiler 2025</title>
+    
+    <!-- 1. QUI VA IL COLLEGAMENTO AL CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- IL TUO CODICE ORIGINALE -->
+    <div id="horror-quiz-box">
+        <h2 id="header-title">Horror Profiler</h2>
+        
+        <div id="quiz-container">
+            <div id="progress-bar"><div id="progress-fill"></div></div>
+            <p id="question-number"></p>
+            
+            <div id="question-wrapper">
+                <div class="question-text" id="question-text">Caricamento...</div>
+            </div>
+            
+            <div class="slider-container">
+                <input type="range" id="current_val" min="0" max="10" value="5">
+                <div class="labels">
+                    <span>Per nulla</span>
+                    <span>Moltissimo</span>
+                </div>
+            </div>
+            
+            <button id="next-btn" onclick="nextQuestion()">PROSSIMA DOMANDA</button>
+        </div>
+
+        <div id="result-area">
+            <h3 style="color: #ff3333;">Il tuo Profilo Horror:</h3>
+            <svg id="radarSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
+            <div id="descrizione-horror"></div>
+            <button class="restart-btn" onclick="resetQuiz()">Rifai il test</button>
+        </div>
+    </div>
+
+    <!-- 2. QUI VA IL COLLEGAMENTO AL JAVASCRIPT (Prima della chiusura del body) -->
+    <script src="script.js"></script>
+</body>
+</html>

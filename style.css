@@ -1,0 +1,38 @@
+body { 
+  background-color: #0a0a0a; 
+  margin: 0; display: flex; justify-content: center; align-items: center; 
+  min-height: 100vh; font-family: 'Segoe UI', sans-serif; 
+}
+
+#horror-quiz-box { 
+  max-width: 550px; width: 100%; padding: 30px; 
+  background: #1a1a1a; color: #fff; border: 2px solid #8B0000; 
+  border-radius: 20px; box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
+  transition: background-color 0.2s ease;
+  position: relative; overflow: hidden;
+}
+
+.blood-flash { background-color: #440000 !important; }
+
+#question-wrapper { transition: all 0.3s ease; opacity: 1; transform: translateX(0); }
+.fade-out { opacity: 0; transform: translateX(-20px); }
+.fade-in { opacity: 0; transform: translateX(20px); }
+
+@keyframes heartBeat {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(1); }
+}
+#radarSVG { animation: heartBeat 0.8s ease-out; margin: 20px auto; display: block; }
+
+.question-text { font-size: 1.2em; margin-bottom: 25px; text-align: center; min-height: 80px; color: #eee; }
+#progress-bar { background: #333; height: 6px; border-radius: 10px; margin-bottom: 25px; overflow: hidden; }
+#progress-fill { background: #8B0000; height: 100%; width: 0%; transition: width 0.4s; }
+.slider-container { margin: 30px 0; }
+.labels { display: flex; justify-content: space-between; font-size: 0.85em; color: #888; margin-top: 10px; }
+input[type=range] { width: 100%; accent-color: #ff3333; cursor: pointer; }
+#next-btn { margin-top: 35px; width: 100%; padding: 15px; background: #8B0000; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; }
+#next-btn:active { transform: scale(0.98); }
+#result-area { display:none; text-align: center; }
+#descrizione-horror { margin-top: 20px; font-size: 1.1em; color: #ccc; background: #222; padding: 15px; border-radius: 10px; line-height: 1.5; }
+.restart-btn { background: none; border: 1px solid #444; color: #888; margin-top: 20px; width: auto; padding: 8px 20px; }
