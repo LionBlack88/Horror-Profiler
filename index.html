@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horror Profiler 2025</title>
-    
-    <!-- 1. QUI VA IL COLLEGAMENTO AL CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- IL TUO CODICE ORIGINALE -->
     <div id="horror-quiz-box">
         <h2 id="header-title">Horror Profiler</h2>
         
-        <div id="quiz-container">
+        <!-- SCHERMATA INIZIALE -->
+        <div id="start-screen">
+            <p style="text-align: center; margin-bottom: 20px;">Inserisci il tuo nome per iniziare il rituale:</p>
+            <input type="text" id="user-name" placeholder="Tuo Nome..." maxlength="20">
+            <button id="start-btn" onclick="startQuiz()">INIZIA IL TEST</button>
+        </div>
+
+        <!-- CONTENITORE QUIZ (Nascosto all'inizio) -->
+        <div id="quiz-container" style="display: none;">
             <div id="progress-bar"><div id="progress-fill"></div></div>
             <p id="question-number"></p>
             
@@ -33,15 +38,21 @@
             <button id="next-btn" onclick="nextQuestion()">PROSSIMA DOMANDA</button>
         </div>
 
+        <!-- AREA RISULTATO -->
         <div id="result-area">
-            <h3 style="color: #ff3333;">Il tuo Profilo Horror:</h3>
+            <h3 id="result-title" style="color: #ff3333;">Il tuo Profilo Horror:</h3>
             <svg id="radarSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
             <div id="descrizione-horror"></div>
-            <button class="restart-btn" onclick="resetQuiz()">Rifai il test</button>
+            
+            <div style="margin-top: 20px;">
+                <button class="screenshot-btn" onclick="takeScreenshot()">Salva Immagine (PNG)</button>
+                <button class="restart-btn" onclick="resetQuiz()">Rifai il test</button>
+            </div>
         </div>
     </div>
 
-    <!-- 2. QUI VA IL COLLEGAMENTO AL JAVASCRIPT (Prima della chiusura del body) -->
+    <!-- Libreria per lo screenshot -->
+    <script src="cdnjs.cloudflare.com"></script>
     <script src="script.js"></script>
 </body>
 </html>
