@@ -1,78 +1,36 @@
-body { 
-  background-color: #0a0a0a; 
-  margin: 0; 
-  display: flex; 
-  justify-content: center; 
-  align-items: flex-start; 
-  padding-top: 20px;
-  min-height: 100vh; 
-  font-family: 'Segoe UI', sans-serif; 
-}
-
-#horror-quiz-box { 
-  max-width: 550px; 
-  width: 100%; 
-  min-height: 720px; 
-  padding: 30px; 
-  background: #1a1a1a; 
-  color: #fff; 
-  border: 2px solid #8B0000; 
-  border-radius: 20px; 
-  box-shadow: 0 0 20px rgba(139, 0, 0, 0.4);
-  transition: background-color 0.2s ease;
-  position: relative; 
-  overflow: hidden;
-  box-sizing: border-box; 
-}
-
-/* Stili per la schermata iniziale */
-#start-screen { padding: 40px 0; text-align: center; }
-#user-name {
-  padding: 15px;
-  border-radius: 8px;
-  border: 1px solid #444;
-  background: #222;
-  color: #fff;
-  width: 80%;
-  margin-bottom: 20px;
-  font-size: 1.1em;
-  text-align: center;
-}
-#start-btn { 
-  width: 100%; padding: 15px; background: #8B0000; color: white; 
-  border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase;
-}
-
+body { background-color: #0a0a0a; margin: 0; display: flex; justify-content: center; align-items: flex-start; padding-top: 20px; min-height: 100vh; font-family: 'Segoe UI', sans-serif; }
+#horror-quiz-box { max-width: 550px; width: 100%; min-height: 720px; padding: 30px; background: #1a1a1a; color: #fff; border: 2px solid #8B0000; border-radius: 20px; box-shadow: 0 0 20px rgba(139, 0, 0, 0.4); transition: background-color 0.2s ease; position: relative; overflow: hidden; box-sizing: border-box; }
 .blood-flash { background-color: #440000 !important; }
 
-#quiz-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 650px;
-  justify-content: space-between;
-}
+/* --- NUOVI STILI PER LA SCHERMATA INIZIALE --- */
+#start-screen { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 500px; }
+#player-name { width: 80%; padding: 15px; margin-bottom: 30px; background: #222; border: 2px solid #555; color: #fff; font-size: 1.2em; text-align: center; border-radius: 8px; outline: none; transition: border-color 0.3s; }
+#player-name:focus { border-color: #8B0000; }
+#start-btn { padding: 15px 40px; background: #8B0000; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; font-size: 1.1em; transition: transform 0.1s; }
+#start-btn:active { transform: scale(0.98); }
+
+/* MODIFICATO: Il contenitore quiz ora parte nascosto */
+#quiz-container { display: none; flex-direction: column; min-height: 650px; justify-content: space-between;}
 
 #question-wrapper { transition: all 0.3s ease; opacity: 1; transform: translateX(0); }
 .fade-out { opacity: 0; transform: translateX(-20px); }
 .fade-in { opacity: 0; transform: translateX(20px); }
-
-@keyframes heartBeat {
-  0% { transform: scale(0.8); opacity: 0; }
-  50% { transform: scale(1.05); opacity: 1; }
-  100% { transform: scale(1); }
-}
+@keyframes heartBeat { 0% { transform: scale(0.8); opacity: 0; } 50% { transform: scale(1.05); opacity: 1; } 100% { transform: scale(1); }}
 #radarSVG { animation: heartBeat 0.8s ease-out; margin: 20px auto; display: block; }
-
 .question-text { font-size: 1.2em; margin-bottom: 25px; text-align: center; min-height: 80px; color: #eee; }
 #progress-bar { background: #333; height: 6px; border-radius: 10px; margin-bottom: 25px; overflow: hidden; }
 #progress-fill { background: #8B0000; height: 100%; width: 0%; transition: width 0.4s; }
 .slider-container { margin: 30px 0; }
 .labels { display: flex; justify-content: space-between; font-size: 0.85em; color: #888; margin-top: 10px; }
 input[type=range] { width: 100%; accent-color: #ff3333; cursor: pointer; }
-
-#next-btn, .screenshot-btn { margin-top: 35px; width: 100%; padding: 15px; background: #8B0000; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; }
-.screenshot-btn { background: #444; margin-top: 10px; width: auto; padding: 10px 20px; }
-
+#next-btn { margin-top: 35px; width: 100%; padding: 15px; background: #8B0000; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; }
+#next-btn:active { transform: scale(0.98); }
 #result-area { display:none; text-align: center; }
 #descrizione-horror { margin-top: 20px; font-size: 1.1em; color: #ccc; background: #222; padding: 15px; border-radius: 10px; line-height: 1.5; }
-.restart-btn { background: none; border: 1px solid #444; color: #888; margin-top: 20px; width: auto; padding: 8px 20px; cursor: pointer; border-radius: 8px; }
+
+/* Stili per i bottoni finali */
+.result-buttons { display: flex; justify-content: center; gap: 15px; margin-top: 25px; flex-wrap: wrap; }
+.restart-btn { background: none; border: 1px solid #444; color: #888; padding: 10px 20px; cursor: pointer; border-radius: 5px; transition: all 0.3s; }
+.restart-btn:hover { border-color: #8B0000; color: #fff; }
+.screenshot-btn { background: #8B0000; color: white; border: none; }
+.screenshot-btn:hover { background: #a30000; }
