@@ -10,7 +10,7 @@ const questions = [
     { t: "Preferisci non vedere il killer fino agli ultimi 5 minuti del film?", c: "mystery" },
     { t: "Ti piace cercare indizi per scoprire il killer prima della fine?", c: "mystery" },
     { t: "Ti piace quando la trama ti costringe a dubitare della sanità mentale del protagonista?", c: "mystery" },
-    { t: "Un horror è migliore se ti lascia con un finale aperto o ambiguo?", c: "mystery" },
+    { t: "Un horror è migliore se ti lascia con con un finale aperto o ambiguo?", c: "mystery" },
     { t: "Ti appassionano le storie basate su sette segrete o simboli esoterici?", c: "mystery" },
     { t: "Preferisci il terrore psicologico di 'non sapere' rispetto a un mostro?", c: "mystery" },
     { t: "Ami le ambientazioni isolate dove chiunque può essere il colpevole?", c: "mystery" },
@@ -34,8 +34,17 @@ const questions = [
 ];
 
 let currentStep = 0;
+let userName = "";
 let scores = { gore: 0, mystery: 0, monsters: 0, supernatural: 0 };
 let counts = { gore: 0, mystery: 0, monsters: 0, supernatural: 0 };
+
+function startQuiz() {
+    const input = document.getElementById('user-name');
+    userName = input.value.trim() || "Anonimo";
+    document.getElementById('start-screen').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'flex';
+    updateQuestion();
+}
 
 function updateQuestion() {
     const wrapper = document.getElementById('question-wrapper');
@@ -67,6 +76,8 @@ function nextQuestion() {
 function showResults() {
     document.getElementById('quiz-container').style.display = 'none';
     document.getElementById('result-area').style.display = 'block';
+    document.getElementById('result-title').innerText = `${userName}, il tuo Profilo Horror:`;
+    
     const vG = scores.gore / 8, vMy = scores.mystery / 8, vMo = scores.monsters / 8, vS = scores.supernatural / 8;
     disegnaRadar(vG, vMy, vMo, vS);
     generaDescrizione(vG, vMy, vMo, vS);
@@ -106,12 +117,31 @@ function generaDescrizione(g, my, mo, s) {
     document.getElementById('descrizione-horror').innerHTML = finalDesc;
 }
 
-function resetQuiz() {
-    currentStep = 0; scores = { gore: 0, mystery: 0, monsters: 0, supernatural: 0 };
-    counts = { gore: 0, mystery: 0, monsters: 0, supernatural: 0 };
-    document.getElementById('quiz-container').style.display = 'block';
-    document.getElementById('result-area').style.display = 'none';
-    updateQuestion();
+function takeScreenshot() {
+    const box = document.getElementById('horror-quiz-box');
+    const buttons = document.querySelectorAll('button');
+    
+    // Nasconde i tasti per una foto pulita
+    buttons.forEach(b => b.style.visibility = 'hidden');
+
+    html2canvas(box, {
+        backgroundColor: "#1a1a1a",
+        scale: 2 // Migliora la qualità
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `HorrorProfiler_2025_${userName}.png`;
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        buttons.forEach(b => b.style.visibility = 'visible');
+    });
 }
 
-updateQuestion();
+function resetQuiz() {
+    currentStep = 0; 
+    scores = { gore: 0, mystery: 0, monsters: 0, supernatural: 0 };
+    counts = { gore: 0, mystery: 0, monsters: 0, supernatural: 0 };
+    document.getElementById('start-screen').style.display = 'block';
+    document.getElementById('quiz-container').style.display = 'none';
+    document.getElementById('result-area').style.display = 'none';
+    document.getElementById('user-name').value = "";
+}
