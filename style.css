@@ -3,7 +3,6 @@ body {
   margin: 0; 
   display: flex; 
   justify-content: center; 
-  /* Modificato: allinea in alto per evitare oscillazioni se il contenuto cambia */
   align-items: flex-start; 
   padding-top: 20px;
   min-height: 100vh; 
@@ -13,7 +12,6 @@ body {
 #horror-quiz-box { 
   max-width: 550px; 
   width: 100%; 
-  /* AGGIUNTO: Altezza minima fissa per evitare lo scatto del grafico */
   min-height: 720px; 
   padding: 30px; 
   background: #1a1a1a; 
@@ -24,13 +22,29 @@ body {
   transition: background-color 0.2s ease;
   position: relative; 
   overflow: hidden;
-  /* Assicura che il padding non aumenti la dimensione totale */
   box-sizing: border-box; 
+}
+
+/* Stili per la schermata iniziale */
+#start-screen { padding: 40px 0; text-align: center; }
+#user-name {
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #222;
+  color: #fff;
+  width: 80%;
+  margin-bottom: 20px;
+  font-size: 1.1em;
+  text-align: center;
+}
+#start-btn { 
+  width: 100%; padding: 15px; background: #8B0000; color: white; 
+  border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase;
 }
 
 .blood-flash { background-color: #440000 !important; }
 
-/* Contenitore interno per distanziare meglio gli elementi durante il quiz */
 #quiz-container {
   display: flex;
   flex-direction: column;
@@ -55,8 +69,10 @@ body {
 .slider-container { margin: 30px 0; }
 .labels { display: flex; justify-content: space-between; font-size: 0.85em; color: #888; margin-top: 10px; }
 input[type=range] { width: 100%; accent-color: #ff3333; cursor: pointer; }
-#next-btn { margin-top: 35px; width: 100%; padding: 15px; background: #8B0000; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; }
-#next-btn:active { transform: scale(0.98); }
+
+#next-btn, .screenshot-btn { margin-top: 35px; width: 100%; padding: 15px; background: #8B0000; color: white; border: none; font-weight: bold; cursor: pointer; border-radius: 8px; text-transform: uppercase; }
+.screenshot-btn { background: #444; margin-top: 10px; width: auto; padding: 10px 20px; }
+
 #result-area { display:none; text-align: center; }
 #descrizione-horror { margin-top: 20px; font-size: 1.1em; color: #ccc; background: #222; padding: 15px; border-radius: 10px; line-height: 1.5; }
-.restart-btn { background: none; border: 1px solid #444; color: #888; margin-top: 20px; width: auto; padding: 8px 20px; }
+.restart-btn { background: none; border: 1px solid #444; color: #888; margin-top: 20px; width: auto; padding: 8px 20px; cursor: pointer; border-radius: 8px; }
