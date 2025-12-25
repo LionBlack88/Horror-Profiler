@@ -4,55 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horror Profiler 2025</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div id="horror-quiz-box">
-        <h2 id="header-title">Horror Profiler</h2>
-        
-        <!-- SCHERMATA INIZIALE -->
-        <div id="start-screen">
-            <p style="text-align: center; margin-bottom: 20px;">Inserisci il tuo nome per iniziare il rituale:</p>
-            <input type="text" id="user-name" placeholder="Tuo Nome..." maxlength="20">
-            <button id="start-btn" onclick="startQuiz()">INIZIA IL TEST</button>
-        </div>
+<div id="horror-quiz-box">
+    <h2 id="header-title">Horror Profiler</h2>
 
-        <!-- CONTENITORE QUIZ (Nascosto all'inizio) -->
-        <div id="quiz-container" style="display: none;">
-            <div id="progress-bar"><div id="progress-fill"></div></div>
-            <p id="question-number"></p>
-            
-            <div id="question-wrapper">
-                <div class="question-text" id="question-text">Caricamento...</div>
-            </div>
-            
-            <div class="slider-container">
-                <input type="range" id="current_val" min="0" max="10" value="5">
-                <div class="labels">
-                    <span>Per nulla</span>
-                    <span>Moltissimo</span>
-                </div>
-            </div>
-            
-            <button id="next-btn" onclick="nextQuestion()">PROSSIMA DOMANDA</button>
-        </div>
-
-        <!-- AREA RISULTATO -->
-        <div id="result-area">
-            <h3 id="result-title" style="color: #ff3333;">Il tuo Profilo Horror:</h3>
-            <svg id="radarSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
-            <div id="descrizione-horror"></div>
-            
-            <div style="margin-top: 20px;">
-                <button class="screenshot-btn" onclick="takeScreenshot()">Salva Immagine (PNG)</button>
-                <button class="restart-btn" onclick="resetQuiz()">Rifai il test</button>
-            </div>
-        </div>
+    <div id="start-screen">
+        <input type="text" id="player-name" placeholder="Inserisci il tuo nome oscuramente..." maxlength="20">
+        <button id="start-btn" onclick="startQuiz()">INIZIA</button>
     </div>
 
-    <!-- Libreria per lo screenshot -->
-    <script src="cdnjs.cloudflare.com"></script>
-    <script src="script.js"></script>
+    <div id="quiz-container">
+        <div id="progress-bar"><div id="progress-fill"></div></div>
+        <p id="question-number"></p>
+        <div id="question-wrapper">
+            <div class="question-text" id="question-text">Caricamento...</div>
+        </div>
+
+        <div class="slider-container">
+            <input type="range" id="current_val" min="0" max="10" value="5">
+            <div class="labels">
+                <span>Per nulla</span>
+                <span>Moltissimo</span>
+            </div>
+        </div>
+        
+        <button id="next-btn" onclick="nextQuestion()">PROSSIMA DOMANDA</button>
+    </div>
+
+    <div id="result-area">
+        <h3 style="color: #ff3333;">Il tuo Profilo Horror:</h3>
+        <svg id="radarSVG" width="400" height="400" viewBox="0 0 400 400"></svg>
+        <div id="descrizione-horror"></div>
+        
+        <div class="result-buttons">
+            <button class="restart-btn screenshot-btn" onclick="saveScreenshot()">Salva Screenshot 📸</button>
+            <button class="restart-btn" onclick="resetQuiz()">Rifai il test</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
