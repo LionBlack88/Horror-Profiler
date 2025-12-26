@@ -34,3 +34,11 @@ input[type=range] { width: 100%; accent-color: #ff3333; cursor: pointer; }
 .restart-btn:hover { border-color: #8B0000; color: #fff; }
 .screenshot-btn { background: #8B0000; color: white; border: none; }
 .screenshot-btn:hover { background: #a30000; }
+
+.subtitle {
+    color: #cccccc; /* Colore grigio chiaro */
+    font-size: 0.9rem; /* Testo un po' più piccolo */
+    margin-top: -10px; /* Avvicina la scritta al titolo */
+    margin-bottom: 20px; /* Distanzia dal campo nome */
+    font-style: italic; /* Corsivo */
+}
